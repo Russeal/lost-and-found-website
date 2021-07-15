@@ -1,0 +1,23 @@
+<div class="col-11 col-sm-9 col-md-6 col-lg-5 col-xl-3 img-upload">
+
+  <label for="formFile" class="form-label">Upload your image</label>
+
+  <p>File should be JPEG, PNG or JPG format.</p>
+
+  <div>
+
+    <input class="form-control" type="file" id="imgFile" accept="image/*"
+            (change)="checkImg()">
+
+    <p>Drag & Drop your image here</p>
+
+    <img src="../../../assets/img-upload.svg" alt="">
+
+  </div>
+
+
+  <p class="or">Or</p>
+
+  <button class="btn btn-primary" (click)="chooseFile()">Choose file</button>
+
+</div>

@@ -1,0 +1,300 @@
+<header class="h-100">
+  <mdb-navbar SideClass="navbar fixed-top navbar-expand navbar-expand-sm navbar-dark scrolling-navbar intro-fixed-nav" [containerInside]="true">
+      <mdb-navbar-brand>
+          <a class="logo navbar-brand ml-3" (click)="goToHome()"><strong>Navbar</strong></a>
+      </mdb-navbar-brand>
+      <links>
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item mr-4 langs">
+                  <a class="" [class.activeLang]="!isEnglish" (click)="changeLanguage('it')">It</a>
+                  &nbsp; | &nbsp;
+                  <a class="" [class.activeLang]="isEnglish" (click)="changeLanguage('en')">En</a>
+              </li>
+              <li class="nav-item waves-light mr-2" mdbWavesEffect>
+                  <a class="nav-link" (click)="form1.show()">
+                    <mdb-icon fas icon="sign-in-alt"></mdb-icon>Sign in</a>
+              </li>
+          </ul>
+      </links>
+  </mdb-navbar>
+</header>
+
+
+<a id="form1Clicker" (click)="form1.show()" class="d-none"></a>
+<a id="form2Clicker" (click)="form2.show()" class="d-none"></a>
+<a id="form1Hider" (click)="form1.hide()" class="d-none"></a>
+<a id="form2Hider" (click)="form2.hide()" class="d-none"></a>
+<a id="findOpener" (click)="findOpener()" class="d-none"></a>
+<a id="lostOpener" (click)="lostOpener()" class="d-none"></a>
+
+
+<!--Main Layout-->
+
+
+
+<main class="text-center py-5">
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+
+              <p align="justify">quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          </div>
+      </div>
+  </div>
+
+</main>
+<!--Main Layout-->
+
+
+
+<!-- <header>
+  <nav class="navbar fixed-top navbar-expand navbar-dark scrolling-navbar">
+      <a class="navbar-brand" (click)="goToHome()"><h3>Topaloq</h3></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" (click)="changeLang('ru')" *ngIf="!isRussian"><img src="assets/images/flags/ru.png"></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="changeLang('uz')" *ngIf="isRussian"><img src="assets/images/flags/uz.png"></a>
+              </li>
+              <li class="nav-item dropdown" dropdown>
+                  <a *ngIf="!isRussian && !isLoggedIn" class="nav-link" (click)="openLogInModal()">Kirish <i class="fa fa-sign-in"></i></a>
+                  <a *ngIf="isRussian && !isLoggedIn" class="nav-link" (click)="openLogInModal()">Вход <i class="fa fa-sign-in"></i></a>
+                  <a dropdownToggle *ngIf="!isRussian && isLoggedIn" class="nav-link waves-light" (click)="shadowChanger()" mdbWavesEffect>{{name}} <i class="fa fa-caret-down"></i></a>
+                  <a dropdownToggle *ngIf="isRussian && isLoggedIn" class="nav-link waves-light" (click)="shadowChanger()" mdbWavesEffect>{{name}} <i class="fa fa-caret-down"></i></a>
+                  <div class="dropdown-menu dropdown-menu-right" *ngIf="isLoggedIn">
+                      <a class="dropdown-item" (click)="goMyProfile()" *ngIf="!isRussian">Mening Profilim</a>
+                      <a class="dropdown-item" (click)="goMyProfile()" *ngIf="isRussian">Мой профиль</a>
+                      <a class="dropdown-item" (click)="logout()" *ngIf="!isRussian">Chiqish</a>
+                      <a class="dropdown-item" (click)="logout()" *ngIf="isRussian">Выход</a>
+                  </div>
+              </li>
+          </ul>
+      </div>
+  </nav>
+</header> -->
+
+<div mdbModal #form1="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
+
+          <!--Header-->
+          <div class="modal-header light-blue darken-3 white-text">
+              <h4 class="title" *ngIf="isRussian"><i class="fa fa-user"></i>Вход</h4>
+              <h4 class="title" *ngIf="!isRussian"><i class="fa fa-user"></i>Kirish</h4>
+              <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form1.hide()">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <!--Body-->
+          <form class="modal-body" autocomplete="off">
+              <p class="errWarn" *ngIf="(isLostWarning && !isRussian) || isFoundWarning">Iltimos avval ro'yhatdan o'ting</p>
+              <p class="errWarn" *ngIf="(isLostWarning && isRussian) || isFoundWarning">Пожалюстаб, регистрация</p>
+              <p class="errWarn" *ngIf="isErrorWarning && !isRussian">Email yoki kalit so'z xato kiritildi</p>
+              <p class="errWarn" *ngIf="isErrorWarning && isRussian">Email или парол неправилно kiritildi</p>
+              <div class="md-form">
+                  <i class="fa fa-envelope prefix"></i>
+                  <input type="text" id="form30" class="form-control" name="username" ngModel required>
+                  <label for="form30">Email</label>
+              </div>
+
+              <div class="md-form">
+                  <i class="fa fa-lock prefix"></i>
+                  <input type="password" id="form31" class="form-control" name="password" ngModel required>
+                  <label for="form31" *ngIf="!isRussian">Kalit so'z</label>
+                  <label for="form31" *ngIf="isRussian">Парол</label>
+              </div>
+
+              <div class="text-center mt-2">
+                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="!isRussian">Kirish<i class="fa fa-sign-in ml-1"></i></button>
+                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="isRussian">Вход<i class="fa fa-sign-in ml-1"></i></button>
+              </div>
+
+          </form>
+          <!--Footer-->
+          <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                  <p *ngIf="!isRussian"><a (click)="openRegistrationModal()" class="deep-orange-text">Ro'yhat</a>dan o'tish</p>
+                  <p *ngIf="isRussian"><a (click)="openRegistrationModal()" class="deep-orange-text">Регистрация</a></p>
+                  <p *ngIf="!isRussian"><a href="#" class="deep-orange-text">Kalit so'z</a>ni unutdim</p>
+                  <p *ngIf="isRussian">Забыл <a href="#" class="deep-orange-text">парол</a></p>
+              </div>
+              <button type="submit" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form1.hide()" *ngIf="isRussian" mdbWavesEffect>Отмен</button>
+              <button type="submit" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form1.hide()" *ngIf="!isRussian" mdbWavesEffect>Bekor qilish</button>
+          </div>
+      </div>
+      <!--/.Content-->
+  </div>
+</div>
+
+<div mdbModal #form2="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
+
+          <!--Header-->
+          <div class="modal-header light-blue darken-3 white-text">
+              <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
+              <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form2.hide()">
+                  <span aria-hidden="true">×</span>
+              </button>
+          </div>
+          <!--Body-->
+          <form autocomplete="off" class="modal-body">
+              <div class="md-form form-sm">
+                  <i class="fa fa-envelope prefix"></i>
+                  <input type="text" id="form32" class="form-control" name="email" ngModel required>
+                  <label for="form32">Your email</label>
+              </div>
+
+              <div class="md-form form-sm">
+                  <i class="fa fa-lock prefix"></i>
+                  <input type="password" id="form33" class="form-control" name="password1" ngModel required>
+                  <label for="form33">Your password</label>
+              </div>
+
+              <div class="md-form form-sm">
+                  <i class="fa fa-lock prefix"></i>
+                  <input type="password" id="form34" class="form-control" name="password2" ngModel required>
+                  <label for="form34">Repeat password</label>
+              </div>
+
+              <div class="text-center mt-2">
+                  <button class="btn btn-info waves-light" mdbWavesEffect>Sign up <i class="fa fa-sign-in ml-1"></i></button>
+              </div>
+
+          </form>
+          <!--Footer-->
+          <div class="modal-footer">
+              <div class="options text-center text-md-right mt-1">
+                  <p>Already have an account? <a (click)="openLogInModal()" class="deep-orange-text">Log In</a></p>
+              </div>
+              <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form2.hide()" mdbWavesEffect>Close</button>
+          </div>
+      </div>
+      <!--/.Content-->
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<!--Footer-->
+<footer class="page-footer mdb-color text-center text-md-left pt-4 mt-4">
+
+  <div class="container">
+  <!--Footer Links-->
+      <div class="row">
+
+          <!--First column-->
+          <div class="col-md-4">
+              <h5 class="title">Topaloq</h5>
+              <hr>
+              <p class="underTitle">Topaloq.uz bu yo'qolgan buyumlar o'z egasini topishi uchun yaratilgan sayt. Nimadir topib oldingizmi? Egasiga qaytarmoqchimiz? Biz yordam beramiz.</p>
+
+              <!--Call to action-->
+              <ul class="list-unstyled list-inline" *ngIf="!isLoggedIn">
+                  <li class="list-inline-item">
+                      <h5>Ro'yxatdan o'ting</h5>
+                  </li>
+                  <li class="list-inline-item">
+                      <a (click)="form2.show()" class="btn btn-success waves-light btn-rounded" mdbWavesEffect><i class="fa fa-user-plus"></i></a>
+                  </li>
+              </ul>
+              <!--/.Call to action-->
+          </div>
+          <!--/.First column-->
+
+          <hr class="hidden-md-up">
+
+          <!--Second column-->
+          <div class="col-md-3">
+              <h5 class="title">Foydali Linklar</h5>
+              <hr>
+              <ul class="list-unstyled">
+                  <li class="mb-2">
+                      <a href="#!">Biz haqimizda</a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="#!">Foydalanish shartlari</a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="#!">Odatiy savollar (FAQs)</a>
+                  </li>
+                  <li class="mb-2">
+                      <a href="#!">Aloqa</a>
+                  </li>
+              </ul>
+          </div>
+          <!--/.Second column-->
+
+          <hr class="hidden-md-up">
+
+          <!--Third column-->
+          <div class="col-md-3">
+              <h5 class="title">Partnyorlar</h5>
+              <hr>
+              <ul class="list-unstyled">
+                  <li>
+                      <a href="#!">Prezident devoni</a>
+                  </li>
+                  <li>
+                      <a href="#!">Link 2</a>
+                  </li>
+                  <li>
+                      <a href="#!">Link 3</a>
+                  </li>
+                  <li>
+                      <a href="#!">Link 4</a>
+                  </li>
+              </ul>
+          </div>
+          <!--/.Third column-->
+      </div>
+  <!--/.Footer Links-->
+  </div>
+  <hr class="m-0">
+
+  <!--Social buttons-->
+  <div class="text-center mb-3">
+
+      <a class="btn-floating btn-small btn-fb waves-light" mdbWavesEffect>
+          <i class="fa fa-facebook"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-tw waves-light" mdbWavesEffect>
+          <i class="fa fa-twitter"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-gplus waves-light" mdbWavesEffect>
+          <i class="fa fa-google-plus"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-li waves-light" mdbWavesEffect>
+          <i class="fa fa-linkedin"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-git waves-light" mdbWavesEffect>
+          <i class="fa fa-github"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-pin waves-light" mdbWavesEffect>
+          <i class="fa fa-pinterest"> </i>
+      </a>
+      <a class="btn-floating btn-small btn-ins waves-light" mdbWavesEffect>
+          <i class="fa fa-instagram"> </i>
+      </a>
+
+  </div>
+  <!--/.Social buttons-->
+
+  <!--Copyright-->
+  <div class="footer-copyright text-center py-3">
+      <div class="container-fluid white-text">
+          Topaloq © 2018 | Barcha huquqlar himiyalangan |
+          <a href="https://www.Topaloq.uz"> Topaloq.uz </a>
+
+      </div>
+  </div>
+  <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
