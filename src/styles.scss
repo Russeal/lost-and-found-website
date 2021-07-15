@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #fafafa;
+
+  .navbar {
+    background-color: #013034;
+
+    .logo, .logo:hover {
+      color: #fff
+    }
+    .nav-item a {
+      font-size: 1.15rem
+    }
+    .langs {
+      color: #fff;
+      transition: .35s;
+      padding: 0.5rem 1rem;
+
+      a {
+        overflow: unset;
+        cursor: pointer;
+
+        &.activeLang {
+          cursor: text;
+          color: #8fa7a9
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// client
+.md-form {
+  span {
+      display: none;
+  }
+}
+
+.navbar {
+  background-color: transparent;
+  transition: all 0.5s ease-out;
+  padding: 8px 1rem;
+  .navbar-brand {
+      padding: unset;
+      h3 {
+          color: #fff;
+          margin-bottom: unset
+      }
+  }
+}
+
+.shadowChanger {
+  box-shadow: -160px 2px 5px 0px rgba(0, 0, 0, 0.16), -160px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.view {
+  background: url("assets/images/main.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  h1 {
+      font-weight: 400;
+  }
+  .btn {
+      font-size: 1.25rem;
+      margin: 0 6rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: 20px;
+  }
+}
+
+.modal-body {
+  .errWarn {
+      color: red;
+      text-align: center
+  }
+}
+
+footer {
+  .underTitle {
+      font-size: 0.95rem
+  }
+  .list-inline-item {
+      h5 {
+          margin-bottom: unset;
+          padding-top: 5px
+      }
+      a {
+          border-radius: 50%;
+          padding: 14px;
+          i {
+              font-size: 20px
+          }
+      }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// admin
+#loginForm {
+  max-width: 400px;
+  margin: 10% auto;
+  .loginBlock {
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+      border: 0;
+      border-radius: 0.125rem;
+      display: flex;
+      flex-direction: column;
+      pointer-events: auto;
+      .white-text {
+          text-align: center;
+          margin: -2rem 1rem 1rem 1rem;
+          padding: 1.5rem;
+          box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+          border-radius: 0.125rem;
+          border: none;
+          h4 {
+              cursor: pointer;
+              margin-bottom: 0;
+              width: 100%;
+              font-size: 1.25rem;
+          }
+      }
+      .loginBody {
+          color: #616161;
+          padding: 1rem 2rem;
+          .md-form {
+              label {
+                  top: 0.4rem;
+              }
+              .prefix {
+                  top: 0.7rem;
+              }
+          }
+      }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  #loginForm {
+      max-width: 90%;
+      margin-top: 25%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 600px){
+  .navbar.scrolling-navbar, .navbar.scrolling-navbar.top-nav-collapse {
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+  }
+}
