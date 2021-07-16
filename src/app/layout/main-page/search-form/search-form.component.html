@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <form class="form-inline md-form m-0">
+
+      <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon>
+      <input class="form-control form-control-sm mx-3 w-50" type="text" placeholder="What are you looking for" aria-label="Search"
+        mdbInput>
+
+      <mdb-icon fas icon="map-marker-alt" aria-hidden="true"></mdb-icon>
+      <input class="form-control form-control-sm mx-3 w-25" type="text" placeholder="{{ value }}" aria-label="Search" (click)='toggleRegionsBlock()'
+        mdbInput>
+
+      <button mdbBtn size="sm" gradient="aqua" class="waves-light" mdbWavesEffect type="submit">Search&nbsp;&nbsp;
+        <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon></button>
+
+    </form>
+
+  </div>
+</div>
+
+<div class="position-relative w-100">
+
+  <div id="regions-layer" class="layer w-100" style="display: none;">
+
+    <div class="title">
+      <a (click)="onSelectItaly()">Tutta Italia</a>
+    </div>
+
+    <hr>
+
+    <div class="regions-list">
+
+      <ul class="row">
+        <li *ngFor="let region of italy" class="col-3 mb-1" (click)="onSelectRegion(region)">
+          <a>{{ region.label }} &nbsp;&nbsp;&nbsp; <mdb-icon fas icon="angle-right"></mdb-icon></a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+  <div id="provinces-layer" class="layer w-100" style="display: none;"  *ngIf="selectedRegion">
+
+    <div class="title">
+      <a *ngIf="selectedRegion">{{ selectedRegion.label }}</a>
+    </div>
+
+    <hr>
+
+    <div class="regions-list">
+
+      <ul class="row">
+        <li *ngFor="let province of selectedRegion.provinces" class="col-3 mb-1" (click)="onSelectProvince(province)">
+          <a>{{ province.label }} &nbsp;&nbsp;&nbsp; <mdb-icon fas icon="angle-right"></mdb-icon></a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

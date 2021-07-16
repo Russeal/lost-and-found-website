@@ -12,6 +12,7 @@ import { MainPageComponent } from './layout/main-page/main-page.component';
 import { MyProfileComponent } from './layout/my-profile/my-profile.component';
 import { FoundCreateComponent } from './layout/found-create/found-create.component';
 import { LostCreateComponent } from './layout/lost-create/lost-create.component';
+import { SearchFormComponent } from './layout/main-page/search-form/search-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LostCreateComponent } from './layout/lost-create/lost-create.component'
     MainPageComponent,
     MyProfileComponent,
     FoundCreateComponent,
-    LostCreateComponent
+    LostCreateComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

@@ -10,15 +10,17 @@ import { LocalStorageSecurity } from 'src/app/dto/localStorageSecurity';
 })
 export class MainPageComponent implements OnInit {
 
-  public isRussian: boolean = false;
+  public isEnglish: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (location.pathname.split('/')[1] === 'ru') {
-      this.isRussian = true;
+    if (location.pathname.split('/')[1] === 'en') {
+      this.isEnglish = true;
     }
   }
+
+
 
   public foundSmth() {
     if (LocalStorageSecurity.hasItem(CommonKey.TOKEN)) {
