@@ -68,6 +68,21 @@ body {
     }
   }
 
+  main {
+    margin-top: 60px;
+
+    .form-control {
+      border: none !important;
+      margin-bottom: 0.2rem !important;
+      font-size: 1.1rem;
+      border-right: 1px solid !important;
+      &:focus {
+        border: none !important;
+        border-right: 1px solid !important;
+      }
+    }
+  }
+
   // footer
   footer {
     background-color: #024d53 !important;
