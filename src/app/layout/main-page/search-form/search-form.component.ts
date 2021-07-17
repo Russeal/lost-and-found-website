@@ -9,10 +9,11 @@ import { RegionDto } from 'src/app/dto/regionDTO';
 })
 export class SearchFormComponent implements OnInit {
 
+  public isEnglish: boolean = false;
   private isRegionBlockOpen: boolean = false;
   public value: String = 'Tutta Italia';
 
-  public selectedRegion: RegionDto;
+  public selectedRegion: RegionDto = new RegionDto();
 
   public italy: Array<RegionDto> = [
     {
@@ -57,8 +58,24 @@ export class SearchFormComponent implements OnInit {
       label: 'Calabria',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'catanzaro',
+          label: 'Catanzaro'
+        },
+        {
+          value: 'cosenza',
+          label: 'Cosenza'
+        },
+        {
+          value: 'crotone',
+          label: 'Crotone'
+        },
+        {
+          value: 'reggio calabria',
+          label: 'Reggio Calabria'
+        },
+        {
+          value: 'vibo valentia',
+          label: 'Vibo Valentia'
         }
       ]
     },
@@ -67,18 +84,88 @@ export class SearchFormComponent implements OnInit {
       label: 'Campania',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'avellino',
+          label: 'Avellino'
+        },
+        {
+          value: 'benevento',
+          label: 'Benevento'
+        },
+        {
+          value: 'caserta',
+          label: 'Caserta'
+        },
+        {
+          value: 'napoli',
+          label: 'Napoli'
+        },
+        {
+          value: 'salerno',
+          label: 'Salerno'
         }
       ]
     },
     {
-      value: 'emilia-romagna',
+      value: 'emilia romagna',
       label: 'Emilia Romagna',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'bologna',
+          label: 'Bologna'
+        },
+        {
+          value: 'ferrara',
+          label: 'Ferrara'
+        },
+        {
+          value: 'forlì-cesena',
+          label: 'Forlì-Cesena'
+        },
+        {
+          value: 'modena',
+          label: 'Modena'
+        },
+        {
+          value: 'parma',
+          label: 'Parma'
+        },
+        {
+          value: 'piacenza',
+          label: 'Piacenza'
+        },
+        {
+          value: 'ravenna',
+          label: 'Ravenna'
+        },
+        {
+          value: 'reggio emilia',
+          label: 'Reggio Emilia'
+        },
+        {
+          value: 'rimini',
+          label: 'Rimini'
+        }
+      ]
+    },
+    {
+      value: "friuli-venezia giulia:",
+      label: 'Friuli-Venezia Giulia',
+      provinces: [
+        {
+          value: 'gorizia',
+          label: 'Gorizia'
+        },
+        {
+          value: 'pordenone',
+          label: 'Pordenone'
+        },
+        {
+          value: 'trieste',
+          label: 'Trieste'
+        },
+        {
+          value: 'udine',
+          label: 'Udine'
         }
       ]
     },
@@ -87,8 +174,24 @@ export class SearchFormComponent implements OnInit {
       label: 'Lazio',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'frosinone',
+          label: 'Frosinone'
+        },
+        {
+          value: 'latina',
+          label: 'Latina'
+        },
+        {
+          value: 'rieti',
+          label: 'Rieti'
+        },
+        {
+          value: 'roma',
+          label: 'Roma'
+        },
+        {
+          value: 'viterbo',
+          label: 'Viterbo'
         }
       ]
     },
@@ -97,8 +200,20 @@ export class SearchFormComponent implements OnInit {
       label: 'Liguria',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'genova',
+          label: 'Genova'
+        },
+        {
+          value: 'imperia',
+          label: 'Imperia'
+        },
+        {
+          value: 'la spezia',
+          label: 'La Spezia'
+        },
+        {
+          value: 'Savona',
+          label: 'Savona'
         }
       ]
     },
@@ -107,8 +222,52 @@ export class SearchFormComponent implements OnInit {
       label: 'Lombardia',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'bergamo',
+          label: 'Bergamo'
+        },
+        {
+          value: 'brescia',
+          label: 'Brescia'
+        },
+        {
+          value: 'como',
+          label: 'Como'
+        },
+        {
+          value: 'cremona',
+          label: 'Cremona'
+        },
+        {
+          value: 'lecco',
+          label: 'Lecco'
+        },
+        {
+          value: 'lodi',
+          label: 'Lodi'
+        },
+        {
+          value: 'mantova',
+          label: 'Mantova'
+        },
+        {
+          value: 'milano',
+          label: 'Milano'
+        },
+        {
+          value: 'monza e della brianza',
+          label: 'Monza e della Brianza'
+        },
+        {
+          value: 'pavia',
+          label: 'Pavia'
+        },
+        {
+          value: 'sondrio',
+          label: 'Sondrio'
+        },
+        {
+          value: 'varese',
+          label: 'Varese'
         }
       ]
     },
@@ -117,8 +276,24 @@ export class SearchFormComponent implements OnInit {
       label: 'Marche',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'ancona',
+          label: 'Ancona'
+        },
+        {
+          value: 'ascoli piceno',
+          label: 'Ascoli Piceno'
+        },
+        {
+          value: 'fermo',
+          label: 'Fermo'
+        },
+        {
+          value: 'macerata',
+          label: 'Macerata'
+        },
+        {
+          value: 'pesaro urbino',
+          label: 'Pesaro Urbino'
         }
       ]
     },
@@ -127,8 +302,12 @@ export class SearchFormComponent implements OnInit {
       label: 'Molise',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'campobasso',
+          label: 'Campobasso'
+        },
+        {
+          value: 'isernia',
+          label: 'Isernia'
         }
       ]
     },
@@ -137,8 +316,36 @@ export class SearchFormComponent implements OnInit {
       label: 'Piemonte',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'alessandria',
+          label: 'Alessandria'
+        },
+        {
+          value: 'asti',
+          label: 'Asti'
+        },
+        {
+          value: 'biella',
+          label: 'Biella'
+        },
+        {
+          value: 'cuneo',
+          label: 'Cuneo'
+        },
+        {
+          value: 'novara',
+          label: 'Novara'
+        },
+        {
+          value: 'torino',
+          label: 'Torino'
+        },
+        {
+          value: 'verbano-cusio-ossola',
+          label: 'Verbano-Cusio-Ossola'
+        },
+        {
+          value: 'vercelli',
+          label: 'Vercelli'
         }
       ]
     },
@@ -147,8 +354,28 @@ export class SearchFormComponent implements OnInit {
       label: 'Puglia',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'bari',
+          label: 'Bari'
+        },
+        {
+          value: 'barletta-andria-trani',
+          label: 'Barletta-Andria-Trani'
+        },
+        {
+          value: 'brindisi',
+          label: 'Brindisi'
+        },
+        {
+          value: 'foggia',
+          label: 'Foggia'
+        },
+        {
+          value: 'lecce',
+          label: 'Lecce'
+        },
+        {
+          value: 'taranto',
+          label: 'Taranto'
         }
       ]
     },
@@ -157,8 +384,24 @@ export class SearchFormComponent implements OnInit {
       label: 'Sardegna',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'cagliari',
+          label: 'Cagliari'
+        },
+        {
+          value: 'nuoro',
+          label: 'Nuoro'
+        },
+        {
+          value: 'oristano',
+          label: 'Oristano'
+        },
+        {
+          value: 'sassari',
+          label: 'Sassari'
+        },
+        {
+          value: 'sud sardegna',
+          label: 'Sud Sardegna'
         }
       ]
     },
@@ -167,8 +410,40 @@ export class SearchFormComponent implements OnInit {
       label: 'Sicilia',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'agrigento',
+          label: 'Agrigento'
+        },
+        {
+          value: 'caltanissetta',
+          label: 'Caltanissetta'
+        },
+        {
+          value: 'catania',
+          label: 'Catania'
+        },
+        {
+          value: 'enna',
+          label: 'Enna'
+        },
+        {
+          value: 'messina',
+          label: 'Messina'
+        },
+        {
+          value: 'palermo',
+          label: 'Palermo'
+        },
+        {
+          value: 'ragusa',
+          label: 'Ragusa'
+        },
+        {
+          value: 'siracusa',
+          label: 'Siracusa'
+        },
+        {
+          value: 'trapani',
+          label: 'Trapani'
         }
       ]
     },
@@ -177,8 +452,44 @@ export class SearchFormComponent implements OnInit {
       label: 'Toscana',
       provinces: [
         {
-          value: '1',
-          label: '1'
+          value: 'arezzo',
+          label: 'Arezzo'
+        },
+        {
+          value: 'firenze',
+          label: 'Firenze'
+        },
+        {
+          value: 'grosseto',
+          label: 'Grosseto'
+        },
+        {
+          value: 'livorno',
+          label: 'Livorno'
+        },
+        {
+          value: 'lucca',
+          label: 'Lucca'
+        },
+        {
+          value: 'massa-carrara',
+          label: 'Massa-Carrara'
+        },
+        {
+          value: 'pisa',
+          label: 'Pisa'
+        },
+        {
+          value: 'pistoia',
+          label: 'Pistoia'
+        },
+        {
+          value: 'prato',
+          label: 'Prato'
+        },
+        {
+          value: 'siena',
+          label: 'Siena'
         }
       ]
     },
@@ -272,24 +583,48 @@ export class SearchFormComponent implements OnInit {
   constructor(private eRef: ElementRef) { }
 
   ngOnInit(): void {
+    if (location.pathname.split('/')[1] === 'en') {
+      this.isEnglish = true;
+      this.value = 'All Italy';
+    }
+  }
+
+
+  public goSearch() {
+    var item = (<HTMLInputElement>document.getElementById('mainSearch')).value
+
+    // GO SEARCH in HERE
   }
 
   public toggleRegionsBlock() {
-    if (!document.getElementById('regions-layer')?.style.getPropertyValue('display').match('block')) {
+    if (!document.getElementById('regions-layer')?.style.getPropertyValue('display').match('block') &&
+        !document.getElementById('provinces-layer')?.style.getPropertyValue('display').match('block')) {
       document.getElementById('regions-layer')?.style.setProperty('display', 'block')
       this.isRegionBlockOpen = true
     }
   }
 
   public onSelectRegion(region: RegionDto) {
-    this.value = region.label + ", Italia"
     this.selectedRegion = region
+    if (this.isEnglish) {
+      this.value = region.label + ", Italy"
+    } else {
+      this.value = region.label + ", Italia"
+    }
     document.getElementById('regions-layer')?.style.setProperty('display', 'none')
     document.getElementById('provinces-layer')?.style.setProperty('display', 'block')
   }
 
+  public onFinalSelectRegion() {
+    document.getElementById('provinces-layer')?.style.setProperty('display', 'none')
+  }
+
   public onSelectItaly() {
-    this.value = 'Tutta Italia'
+    if (this.isEnglish) {
+      this.value = 'All Italy'
+    } else {
+      this.value = 'Tutta Italia'
+    }
     this.selectedRegion = new RegionDto();
     document.getElementById('regions-layer')?.style.setProperty('display', 'none')
     document.getElementById('provinces-layer')?.style.setProperty('display', 'none')
@@ -298,7 +633,17 @@ export class SearchFormComponent implements OnInit {
   public onSelectProvince(province: ProvinceDto) {
     this.value = province.label + ", " + this.value
     document.getElementById('provinces-layer')?.style.setProperty('display', 'none')
+  }
 
+  public changeRegion() {
+    if (this.isEnglish) {
+      this.value = 'All Italy'
+    } else {
+      this.value = 'Tutta Italia'
+    }
+    this.selectedRegion = new RegionDto();
+    document.getElementById('provinces-layer')?.style.setProperty('display', 'none')
+    document.getElementById('regions-layer')?.style.setProperty('display', 'block')
   }
 
 }

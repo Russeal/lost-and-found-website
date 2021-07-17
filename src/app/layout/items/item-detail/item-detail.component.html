@@ -1,0 +1,34 @@
+<div style="height: 200px;"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngIf="item">
+
+      <!-- Card -->
+      <mdb-card>
+        <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 192px">
+          <!-- Card img -->
+          <mdb-card-img src="{{ '../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+        <!--Card content-->
+        <mdb-card-body>
+          <!--Title-->
+          <mdb-card-title>
+            <h4>{{ item.name }}</h4>
+          </mdb-card-title>
+
+          <!--Text-->
+          <mdb-card-text>{{ item.details }}</mdb-card-text>
+
+          <a *ngIf="isEnglish" routerLink="/en/contact/{{ item.id }}" mdbBtn color="primary" mdbWavesEffect>Contact</a>
+          <a *ngIf="!isEnglish" routerLink="/contact/{{ item.id }}" mdbBtn color="primary" mdbWavesEffect>Contatto</a>
+        </mdb-card-body>
+      </mdb-card>
+      <!-- Card -->
+
+
+    </div>
+  </div>
+</div>

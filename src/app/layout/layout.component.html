@@ -51,15 +51,15 @@
               <p class="errWarn" *ngIf="isErrorWarning && isRussian">Email или парол неправилно kiritildi</p>
               <div class="md-form">
                   <i class="fa fa-envelope prefix"></i>
-                  <input type="text" id="form30" class="form-control" name="username" ngModel required>
-                  <label for="form30">Email</label>
+                  <input type="text" id="form30" class="form-control" name="username" placeholder="Email" ngModel required>
+                  <!-- <label for="form30">Email</label> -->
               </div>
 
               <div class="md-form">
                   <i class="fa fa-lock prefix"></i>
-                  <input type="password" id="form31" class="form-control" name="password" ngModel required>
-                  <label for="form31" *ngIf="!isRussian">Kalit so'z</label>
-                  <label for="form31" *ngIf="isRussian">Парол</label>
+                  <input type="password" id="form31" class="form-control" name="password" placeholder="Password" ngModel required>
+                  <!-- <label for="form31" *ngIf="!isRussian">Kalit so'z</label>
+                  <label for="form31" *ngIf="isRussian">Парол</label> -->
               </div>
 
               <div class="text-center mt-2">

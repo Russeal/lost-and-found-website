@@ -70,7 +70,7 @@ body {
 
   main {
     margin-top: 60px;
-    form {
+    .form-inline {
       background-color: #fff; padding: 15px 30px;
       i {
         font-size: 1.4rem
@@ -115,7 +115,7 @@ body {
       .title {
         padding-inline-start: 5px;
         text-align: left;
-        &:hover {
+        a:hover {
           text-decoration: underline
         }
       }

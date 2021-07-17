@@ -13,6 +13,12 @@ import { MyProfileComponent } from './layout/my-profile/my-profile.component';
 import { FoundCreateComponent } from './layout/found-create/found-create.component';
 import { LostCreateComponent } from './layout/lost-create/lost-create.component';
 import { SearchFormComponent } from './layout/main-page/search-form/search-form.component';
+import { ItemsComponent } from './layout/items/items.component';
+import { ItemDetailComponent } from './layout/items/item-detail/item-detail.component';
+import { ContactComponent } from './layout/contact/contact.component';
+import { ItemEditComponent } from './layout/items/item-edit/item-edit.component';
+import { NewItemComponent } from './layout/items/new-item/new-item.component';
+import { MyItemsComponent } from './layout/items/my-items/my-items.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { SearchFormComponent } from './layout/main-page/search-form/search-form.
     MyProfileComponent,
     FoundCreateComponent,
     LostCreateComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    ItemsComponent,
+    ItemDetailComponent,
+    ContactComponent,
+    ItemEditComponent,
+    NewItemComponent,
+    MyItemsComponent
   ],
   imports: [
     BrowserModule,

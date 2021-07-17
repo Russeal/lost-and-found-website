@@ -1,20 +1,21 @@
 <div class="row">
   <div class="col-md-12">
 
-    <form class="form-inline md-form m-0">
+    <div class="form-inline md-form m-0">
 
       <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon>
-      <input class="form-control form-control-sm mx-3 w-50" type="text" placeholder="What are you looking for" aria-label="Search"
-        mdbInput>
+      <input id="mainSearch" class="form-control form-control-sm mx-3 w-50" type="text"
+            placeholder="{{ !isEnglish ? 'Cosa cerchi' : 'What are you looking for' }}?" aria-label="Search" autocomplete="off" mdbInput>
 
       <mdb-icon fas icon="map-marker-alt" aria-hidden="true"></mdb-icon>
       <input class="form-control form-control-sm mx-3 w-25" type="text" placeholder="{{ value }}" aria-label="Search" (click)='toggleRegionsBlock()'
         mdbInput>
 
-      <button mdbBtn size="sm" gradient="aqua" class="waves-light" mdbWavesEffect type="submit">Search&nbsp;&nbsp;
+      <button (click)="goSearch()" mdbBtn size="sm" gradient="aqua" class="waves-light" mdbWavesEffect
+        type="submit">{{ !isEnglish ? 'Cerca' : 'Search' }}&nbsp;&nbsp;
         <mdb-icon fas icon="search" aria-hidden="true"></mdb-icon></button>
 
-    </form>
+      </div>
 
   </div>
 </div>
@@ -24,7 +25,7 @@
   <div id="regions-layer" class="layer w-100" style="display: none;">
 
     <div class="title">
-      <a (click)="onSelectItaly()">Tutta Italia</a>
+      <a (click)="onSelectItaly()"><mdb-icon fas icon="angle-left"></mdb-icon>&nbsp;&nbsp;{{ !isEnglish ? 'Tutta Italia' : 'All Italy' }}</a>
     </div>
 
     <hr>
@@ -44,7 +45,8 @@
   <div id="provinces-layer" class="layer w-100" style="display: none;"  *ngIf="selectedRegion">
 
     <div class="title">
-      <a *ngIf="selectedRegion">{{ selectedRegion.label }}</a>
+      <a (click)="changeRegion()"><mdb-icon fas icon="angle-left"></mdb-icon>&nbsp;&nbsp;{{ !isEnglish ? 'Cambia Regione' : 'Change Region' }}</a>
+      <a style="float: right;" (click)="onFinalSelectRegion()">{{ !isEnglish ? 'Tutta' : 'All' }} {{ selectedRegion.label }}&nbsp;&nbsp;<mdb-icon fas icon="angle-right"></mdb-icon></a>
     </div>
 
     <hr>
