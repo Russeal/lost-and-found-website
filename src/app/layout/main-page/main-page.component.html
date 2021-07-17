@@ -37,16 +37,23 @@
               </a>
             </div>
             <!--Card content-->
-            <mdb-card-body>
+            <mdb-card-body style="text-align: left;">
               <!--Title-->
               <mdb-card-title>
-                <h4>{{ item.name }}</h4>
+                <h4 style="
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;">{{ item.name }}</h4>
               </mdb-card-title>
 
               <!--Text-->
               <mdb-card-text>{{ item.details }}</mdb-card-text>
 
-              <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
+              <!-- time -->
+              <p style="font-size: 0.7rem;"><mdb-icon far icon="clock"></mdb-icon> {{ item.time }}, {{item.date}} </p>
+              <!-- Location -->
+              <p><mdb-icon fas icon="map-marker-alt"></mdb-icon><strong> {{ item.location }}</strong></p>
+
             </mdb-card-body>
           </mdb-card>
           <!-- Card -->

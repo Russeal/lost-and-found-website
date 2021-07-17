@@ -1,34 +1,49 @@
-<div style="height: 200px;"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-4" *ngIf="item">
+<div class="container" style="margin-top: 10rem; margin-bottom: 5rem">
 
-      <!-- Card -->
-      <mdb-card>
-        <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 192px">
-          <!-- Card img -->
-          <mdb-card-img src="{{ '../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
-          <a>
-            <div class="mask"></div>
-          </a>
-        </div>
-        <!--Card content-->
-        <mdb-card-body>
-          <!--Title-->
-          <mdb-card-title>
-            <h4>{{ item.name }}</h4>
-          </mdb-card-title>
+  <!-- Grid row -->
+  <div class="row" *ngIf="item">
 
-          <!--Text-->
-          <mdb-card-text>{{ item.details }}</mdb-card-text>
+    <!-- Grid column -->
+    <div class="col-lg-5">
 
-          <a *ngIf="isEnglish" routerLink="/en/contact/{{ item.id }}" mdbBtn color="primary" mdbWavesEffect>Contact</a>
-          <a *ngIf="!isEnglish" routerLink="/contact/{{ item.id }}" mdbBtn color="primary" mdbWavesEffect>Contatto</a>
-        </mdb-card-body>
-      </mdb-card>
-      <!-- Card -->
+      <!-- Featured image -->
 
+      <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect style="max-height: 325px;">
+        <img class="img-fluid w-100" src="{{ '../../../assets/images/' + item.id + '.jpg'}}" alt="Sample image">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
 
     </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-7 mt-3">
+
+      <!-- Category -->
+      <a href="#!" class="{{ item.status.match('found') ? 'indigo-text' : 'pink-text' }}">
+        <h6 class="font-weight-bold mb-3"><mdb-icon fas icon="suitcase" class="pr-2"></mdb-icon>{{ item.category }}</h6>
+      </a>
+      <!-- Post title -->
+      <h3 class="font-weight-bold mb-3">
+        <a mdbBtn color="{{ item.status.match('found') ? 'indigo' : 'pink' }}" class="mr-4 ml-0" mdbWavesEffect>{{ item.status.match('found') ? 'Found' : 'Lost' }}</a>
+        <strong>{{ item.name }}</strong>
+      </h3>
+      <!-- Excerpt -->
+      <p>{{ item.details }}</p>
+      <!-- Location -->
+      <p><mdb-icon far icon="clock"></mdb-icon> {{ item.time }}, {{item.date}} </p>
+      <!-- Location -->
+      <p><mdb-icon fas icon="map-marker-alt"></mdb-icon><a><strong> {{ item.location }}</strong></a></p>
+      <!-- Post data -->
+      <p>by <a><strong>{{ item.profile }}</strong></a></p>
+      <button mdbBtn class="btn-outline-call btn-sm" type="button" color="primary" mdbWavesEffect><mdb-icon fas icon="phone"></mdb-icon></button>&nbsp;&nbsp;
+      <button routerLink="{{ isEnglish ? '/en/contact/' + item.id : '/contact/' + item.id }}" mdbBtn class="btn-outline-write btn-md" type="button" color="default" mdbWavesEffect>Contatta</button>
+
+    </div>
+    <!-- Grid column -->
+
   </div>
+  <!-- Grid row -->
 </div>
