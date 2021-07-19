@@ -19,6 +19,7 @@ import { ContactComponent } from './layout/contact/contact.component';
 import { ItemEditComponent } from './layout/items/item-edit/item-edit.component';
 import { NewItemComponent } from './layout/items/new-item/new-item.component';
 import { MyItemsComponent } from './layout/items/my-items/my-items.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MyItemsComponent } from './layout/items/my-items/my-items.component';
     BrowserModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

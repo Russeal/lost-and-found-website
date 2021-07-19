@@ -1,1 +1,58 @@
-<p>my-items works!</p>
+<div class="container" style="margin-top: 8rem; margin-bottom: 5rem">
+    <!-- Section: Blog v.3 -->
+    <section>
+
+      <!-- Section heading -->
+      <h2 class="h1-responsive font-weight-bold text-center mb-5">
+        My Announcements
+        <a mdbBtn class="btn-md" style="float: right;" routerLink="{{ isEnglish ? '/en/new-item' : '/new-item' }}"><mdb-icon fas icon="plus"></mdb-icon> &nbsp;&nbsp;&nbsp; New announcement</a>
+      </h2>
+
+      <!-- Grid row -->
+      <div *ngFor="let item of items">
+
+        <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-xl-3">
+
+            <!-- Featured image -->
+            <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+              <img class="img-fluid" src="../../../../assets/images/{{ item?.id }}.jpg" alt="Sample image">
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-6 col-xl-6">
+
+            <!-- Post title -->
+            <h3 class="font-weight-bold mb-3"><strong>{{ item.name }}</strong></h3>
+            <!-- Excerpt -->
+            <p class="dark-grey-text">{{ item.details }}</p>
+            <!-- Post data -->
+            <p>{{ item.time }}, {{ item.date }}</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <div class="col-lg-3 pt-2" style="text-align: right;">
+            <!-- Read more button -->
+            <a mdbBtn class="btn-md" color="primary" mdbWavesEffect routerLink="{{ isEnglish ? '/en/edit-item/' + item.id : '/edit-item/' + item.id }}">Edit</a>
+            <a mdbBtn class="btn-md" color="primary" mdbWavesEffect (click)="deleteItem(item.id)">Delete</a>
+          </div>
+
+        </div>
+        <!-- Grid row -->
+
+        <hr class="my-5" style="margin-right: 8px;">
+
+      </div>
+
+    </section>
+    <!-- Section: Blog v.3 -->
+</div>

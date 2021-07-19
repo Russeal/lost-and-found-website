@@ -1,1 +1,65 @@
-<p>new-item works!</p>
+<div class="container" style="margin-top: 8rem; margin-bottom: 5rem">
+
+  <h2 style="text-align: center;">Create new item</h2>
+
+  <div class="row mt-4">
+
+    <div class="col-5">
+      <app-img-uploader></app-img-uploader>
+    </div>
+
+    <form action="" (ngSubmit)="onSubmit()" class="col-7">
+      <!-- name -->
+      <div class="md-form">
+        <input mdbInput type="text" name="itemName" id="itemName" class="form-control" [(ngModel)]="name" autocomplete="off">
+        <label for="itemName">Name</label>
+      </div>
+      <!-- category -->
+      <div class="md-form">
+        <input mdbInput type="text" name="itemCategory" id="itemCategory" class="form-control" [(ngModel)]="category">
+        <label for="itemCategory">Category</label>
+      </div>
+      <!-- status -->
+      <div class="md-form">
+        <input mdbInput type="text" name="itemStatus" id="itemStatus" class="form-control" [(ngModel)]="status">
+        <label for="itemStatus">Status</label>
+      </div>
+
+      <!-- time -->
+      <div class="md-form">
+          <input
+          type="time"
+          name="itemTime"
+          id="itemTime"
+          class="form-control"
+          value="12:00"
+          mdbInput
+        />
+        <label for="itemTime">What time?</label>
+      </div>
+
+      <!-- date -->
+      <div class="md-form">
+        <input mdbInput id="itemDate" name="itemDate" class="form-control" type="date" value="{{date}}">
+        <label for="itemDate">Date. Format: dd/mm/yyyy</label>
+      </div>
+
+      <!-- location -->
+      <div class="md-form">
+        <input mdbInput type="text" name="itemLocation" id="itemLocation" class="form-control" [(ngModel)]="location">
+        <label for="itemLocation">Location</label>
+      </div>
+
+      <!-- details -->
+      <div class="md-form input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text md-addon">With textarea</span>
+        </div>
+        <textarea class="md-textarea form-control" aria-label="With textarea"></textarea>
+      </div>
+    </form>
+
+  </div>
+
+  <a type="btn" class="btn" (click)="test()">Submit</a>
+</div>
