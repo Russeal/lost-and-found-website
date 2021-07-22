@@ -2,64 +2,107 @@
 
   <h2 style="text-align: center;">Create new item</h2>
 
-  <div class="row mt-4">
+  <div class="row mt-5">
+
+    <div class="col-1"></div>
 
     <div class="col-5">
       <app-img-uploader></app-img-uploader>
     </div>
 
-    <form action="" (ngSubmit)="onSubmit()" class="col-7">
+    <form action="" (ngSubmit)="onSubmit()" class="col-5">
       <!-- name -->
-      <div class="md-form">
+      <div class="md-form mb-5">
         <input mdbInput type="text" name="itemName" id="itemName" class="form-control" [(ngModel)]="name" autocomplete="off">
         <label for="itemName">Name</label>
       </div>
-      <!-- category -->
-      <div class="md-form">
-        <input mdbInput type="text" name="itemCategory" id="itemCategory" class="form-control" [(ngModel)]="category">
-        <label for="itemCategory">Category</label>
-      </div>
       <!-- status -->
-      <div class="md-form">
-        <input mdbInput type="text" name="itemStatus" id="itemStatus" class="form-control" [(ngModel)]="status">
-        <label for="itemStatus">Status</label>
+      <div class="md-form statStyle">
+        <label for="itemStatus">{{ isEnglish ? 'Choose the status:' : 'Scegli lo stato:' }}</label>
+        <select mdbInput class="browser-default custom-select form-control" id="itemStatus" *ngIf='isEnglish'>
+          <option selected disabled>Choose the status: </option>
+          <option value="lost" >I Lost</option>
+          <option value="found" >I Found</option>
+        </select>
+        <select mdbInput class="browser-default custom-select form-control" id="itemStatus" *ngIf='!isEnglish'>
+          <option selected disabled>Scegli lo stato: </option>
+          <option value="lost" >Ho Perso</option>
+          <option value="found" >Ho Trovato</option>
+        </select>
+      </div>
+      <!-- category -->
+      <div class="md-form statStyle mb-2">
+        <label for="itemStatus">{{ isEnglish ? 'Category:' : 'Categoria:' }}</label>
+        <select mdbInput class="browser-default custom-select form-control" id="itemCategory">
+          <option selected disabled>{{ isEnglish ? 'Category:' : 'Categoria:' }}</option>
+          <option *ngFor="let cat of categories" value="{{cat}}" >{{cat}}</option>
+        </select>
       </div>
 
-      <!-- time -->
-      <div class="md-form">
-          <input
-          type="time"
-          name="itemTime"
-          id="itemTime"
-          class="form-control"
-          value="12:00"
-          mdbInput
-        />
-        <label for="itemTime">What time?</label>
-      </div>
+      <div class="row">
+        <div class="col-6">
 
-      <!-- date -->
-      <div class="md-form">
-        <input mdbInput id="itemDate" name="itemDate" class="form-control" type="date" value="{{date}}">
-        <label for="itemDate">Date. Format: dd/mm/yyyy</label>
+          <!-- time -->
+          <div class="md-form">
+              <input
+              type="time"
+              name="itemTime"
+              id="itemTime"
+              class="form-control"
+              value="12:00"
+              mdbInput
+            />
+            <label for="itemTime">What time?</label>
+          </div>
+
+        </div>
+        <div class="col-6">
+
+          <!-- date -->
+          <div class="md-form">
+            <input mdbInput id="itemDate" name="itemDate" class="form-control" type="date" value="{{date}}">
+            <label for="itemDate">Date. Format: dd/mm/yyyy</label>
+          </div>
+
+        </div>
       </div>
 
       <!-- location -->
-      <div class="md-form">
-        <input mdbInput type="text" name="itemLocation" id="itemLocation" class="form-control" [(ngModel)]="location">
-        <label for="itemLocation">Location</label>
+      <div class="row">
+        <div class="col-6">
+          <label for="itemRegions">Location: </label>
+          <select class="browser-default custom-select" id="itemRegions" (change)="onRegSelected()" *ngIf="isEnglish">
+            <option selected value="Italy">Whole Italy</option>
+            <option *ngFor="let reg of italy" value="{{reg.label}}, Italy">{{reg.label}}</option>
+          </select>
+          <select class="browser-default custom-select" id="itemRegions" (change)="onRegSelected()" *ngIf="!isEnglish">
+            <option selected *ngIf="isEnglish" value="Italy">Whole Italy</option>
+            <option selected *ngIf="!isEnglish" value="Italia">Tutta Italia</option>
+            <option *ngFor="let reg of italy" value="{{reg.label}}, Italia">{{reg.label}}</option>
+          </select>
+        </div>
+
+        <div class="col-6" *ngIf="selectedRegion && selectedRegion.label">
+          <label for="itemProvinces">&nbsp;</label>
+          <select class="browser-default custom-select" id="itemProvinces">
+            <option selected>Whole {{ selectedRegion.label }} </option>
+            <option *ngFor="let prov of selectedRegion.provinces" value="{{prov.label}}" >{{prov.label}}</option>
+          </select>
+        </div>
       </div>
 
       <!-- details -->
-      <div class="md-form input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text md-addon">With textarea</span>
-        </div>
-        <textarea class="md-textarea form-control" aria-label="With textarea"></textarea>
+      <div class="md-form">
+        <textarea type="text" id="itemDetails" name="itemDetails" class="md-textarea form-control" mdbInput></textarea>
+        <label for="itemDetails">Give some details:</label>
       </div>
+
     </form>
+
+    <div class="col-12 row mt-5">
+      <button class="btn btn-primary m-auto" type="submit" (click)="onSubmit()">Submit</button>
+    </div>
 
   </div>
 
-  <a type="btn" class="btn" (click)="test()">Submit</a>
 </div>

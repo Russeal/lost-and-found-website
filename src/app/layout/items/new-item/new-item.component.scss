@@ -1,0 +1,13 @@
+form {
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 10px;
+  margin-left: 15px;
+  padding: 0 30px;
+  .statStyle label.active {
+    transform: translateY(-29px) scale(0.8)
+  }
+  .statStyle select{
+    padding-left: 10px
+  }
+}

@@ -1,5 +1,4 @@
 .img-upload {
-  margin: 1rem auto;
   padding: 15px;
   height: 500px;
   background-color: white;
@@ -58,7 +57,10 @@
   .btn {
     display: block;
     margin: 0 auto;
-    border-radius: 10px
+    border-radius: 10px;
+    color: #00c851 !important;
+    background-color: transparent !important;
+    border: 2px solid #00c851 !important;
   }
 }
 

@@ -183,6 +183,19 @@ body {
 
 
 
+.itemDet {
+  min-height: 60px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.btn-rounded {
+  border-radius: 20px !important
+}
+
 
 
 

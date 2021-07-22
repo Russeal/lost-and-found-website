@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { fakeItems } from 'src/app/dto/fake-data';
 import { Item } from 'src/app/dto/itemDto';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-item-detail',
@@ -10,19 +10,25 @@ import { Item } from 'src/app/dto/itemDto';
 })
 export class ItemDetailComponent implements OnInit {
 
-  public item?: Item;
+  public isLoading: boolean = true;
+  public item: Item;
   public isEnglish: boolean = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private itemsService: ItemsService) { }
 
   ngOnInit(): void {
     if (location.pathname.split('/')[1] === 'en') {
       this.isEnglish = true;
     }
 
-    const id  = this.route.snapshot.paramMap.get('id')
+    const id  = this.route.snapshot.paramMap.get('id') || '0'
 
-    this.item = fakeItems.find(item => item.id === id)
+    this.itemsService.getItemByID(id).subscribe(
+      data => {
+        this.item = data;
+        this.isLoading = false;
+      }
+    );
   }
 
 }

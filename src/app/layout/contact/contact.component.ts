@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fakeItems } from 'src/app/dto/fake-data';
 import { Item } from 'src/app/dto/itemDto';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-contact',
@@ -10,23 +10,28 @@ import { Item } from 'src/app/dto/itemDto';
 })
 export class ContactComponent implements OnInit {
 
+  public isLoading: boolean = true;
   email: string = '';
   message: string = '';
-  item?: Item;
+  item: Item;
   isEnglish: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private itemsService: ItemsService) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.item = fakeItems.find(item => item.id === id);
-
-
     if (location.pathname.split('/')[1] === 'en') {
       this.isEnglish = true;
     }
 
-    this.message = `Hi, I contacting you about the announcement of ${ this.item?.name }.`;
+    const id = this.route.snapshot.paramMap.get('id') || '0'
+
+    this.itemsService.getItemByID(id).subscribe(
+      data => {
+        this.item = data;
+        this.isLoading = false;
+        this.message = `Hi, I contacting you about the announcement of ${ data.name }.`;
+      }
+    );
   }
 
   sendMessage() {

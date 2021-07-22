@@ -1,6 +1,6 @@
 <div class="container" style="margin-top: 8rem; margin-bottom: 5rem">
     <!-- Section: Blog v.3 -->
-    <section>
+    <section *ngIf="!isLoading">
 
       <!-- Section heading -->
       <h2 class="h1-responsive font-weight-bold text-center mb-5">
@@ -55,4 +55,9 @@
 
     </section>
     <!-- Section: Blog v.3 -->
+
+    <!-- Grid row -->
+    <div class="row" *ngIf="isLoading">
+      <h2>Loading...</h2>
+    </div>
 </div>

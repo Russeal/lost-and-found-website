@@ -13,6 +13,9 @@
           "skipTests": true,
           "style": "scss"
         },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
         "@schematics/angular:application": {
           "strict": true
         }

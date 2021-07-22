@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+
 import { AppComponent } from './app.component';
 import { ImgUploaderComponent } from './layout/img-uploader/img-uploader.component';
 import { SignInComponent } from './layout/sign-in/sign-in.component';
@@ -19,7 +23,6 @@ import { ContactComponent } from './layout/contact/contact.component';
 import { ItemEditComponent } from './layout/items/item-edit/item-edit.component';
 import { NewItemComponent } from './layout/items/new-item/new-item.component';
 import { MyItemsComponent } from './layout/items/my-items/my-items.component';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

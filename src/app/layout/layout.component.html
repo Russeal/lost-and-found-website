@@ -11,9 +11,13 @@
                   &nbsp; | &nbsp;
                   <a class="" [class.activeLang]="isEnglish" (click)="changeLanguage('en')">En</a>
               </li>
-              <li class="nav-item waves-light mr-2" mdbWavesEffect>
+              <li class="nav-item waves-light mr-2" mdbWavesEffect *ngIf="!(auth.user | async)">
                   <a class="nav-link" (click)="form1.show()">
                     <mdb-icon fas icon="sign-in-alt"></mdb-icon>{{ isEnglish ? 'Sign in' : 'Accedi' }}</a>
+              </li>
+              <li class="nav-item waves-light mr-2" mdbWavesEffect *ngIf="auth.user | async">
+                  <a class="nav-link" (click)="signOutClicked()">
+                    {{ isEnglish ? 'Sign out' : 'Disconnessione' }}<mdb-icon fas icon="sign-out-alt"></mdb-icon></a>
               </li>
           </ul>
       </links>
@@ -27,8 +31,7 @@
 <a id="form2Clicker" (click)="form2.show()" class="d-none"></a>
 <a id="form1Hider" (click)="form1.hide()" class="d-none"></a>
 <a id="form2Hider" (click)="form2.hide()" class="d-none"></a>
-<a id="findOpener" (click)="findOpener()" class="d-none"></a>
-<a id="lostOpener" (click)="lostOpener()" class="d-none"></a>
+
 
 <div mdbModal #form1="mdb-modal" class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
@@ -37,18 +40,18 @@
 
           <!--Header-->
           <div class="modal-header light-blue darken-3 white-text">
-              <h4 class="title" *ngIf="isRussian"><i class="fa fa-user"></i>Вход</h4>
-              <h4 class="title" *ngIf="!isRussian"><i class="fa fa-user"></i>Kirish</h4>
+              <h4 class="title" *ngIf="isEnglish"><i class="fa fa-user"></i>Вход</h4>
+              <h4 class="title" *ngIf="!isEnglish"><i class="fa fa-user"></i>Kirish</h4>
               <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form1.hide()">
                   <span aria-hidden="true">×</span>
               </button>
           </div>
           <!--Body-->
           <form class="modal-body" autocomplete="off">
-              <p class="errWarn" *ngIf="(isLostWarning && !isRussian) || isFoundWarning">Iltimos avval ro'yhatdan o'ting</p>
-              <p class="errWarn" *ngIf="(isLostWarning && isRussian) || isFoundWarning">Пожалюстаб, регистрация</p>
-              <p class="errWarn" *ngIf="isErrorWarning && !isRussian">Email yoki kalit so'z xato kiritildi</p>
-              <p class="errWarn" *ngIf="isErrorWarning && isRussian">Email или парол неправилно kiritildi</p>
+              <p class="errWarn" *ngIf="isErrorWarning && !isEnglish">Iltimos avval ro'yhatdan o'ting</p>
+              <p class="errWarn" *ngIf="isErrorWarning && isEnglish">Пожалюста, регистрация</p>
+              <p class="errWarn" *ngIf="isErrorWarning && !isEnglish">Email yoki kalit so'z xato kiritildi</p>
+              <p class="errWarn" *ngIf="isErrorWarning && isEnglish">Email или парол неправилно kiritildi</p>
               <div class="md-form">
                   <i class="fa fa-envelope prefix"></i>
                   <input type="text" id="form30" class="form-control" name="username" placeholder="Email" ngModel required>
@@ -58,26 +61,32 @@
               <div class="md-form">
                   <i class="fa fa-lock prefix"></i>
                   <input type="password" id="form31" class="form-control" name="password" placeholder="Password" ngModel required>
-                  <!-- <label for="form31" *ngIf="!isRussian">Kalit so'z</label>
-                  <label for="form31" *ngIf="isRussian">Парол</label> -->
+                  <!-- <label for="form31" *ngIf="!isEnglish">Kalit so'z</label>
+                  <label for="form31" *ngIf="isEnglish">Парол</label> -->
               </div>
 
               <div class="text-center mt-2">
-                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="!isRussian">Kirish<i class="fa fa-sign-in ml-1"></i></button>
-                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="isRussian">Вход<i class="fa fa-sign-in ml-1"></i></button>
+                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="!isEnglish">Kirish<i class="fa fa-sign-in ml-1"></i></button>
+                  <button class="btn btn-info waves-light" mdbWavesEffect *ngIf="isEnglish">Вход<i class="fa fa-sign-in ml-1"></i></button>
               </div>
 
           </form>
 
           <div class="modal-footer">
               <div class="options text-center text-md-right mt-1">
-                  <p *ngIf="!isRussian"><a (click)="openRegistrationModal()" class="deep-orange-text">Ro'yhat</a>dan o'tish</p>
-                  <p *ngIf="isRussian"><a (click)="openRegistrationModal()" class="deep-orange-text">Регистрация</a></p>
-                  <p *ngIf="!isRussian"><a href="#" class="deep-orange-text">Kalit so'z</a>ni unutdim</p>
-                  <p *ngIf="isRussian">Забыл <a href="#" class="deep-orange-text">парол</a></p>
+                  <p *ngIf="!isEnglish"><a (click)="openRegistrationModal()" class="deep-orange-text">Ro'yhatdan o'tish</a></p>
+                  <p *ngIf="isEnglish"><a (click)="openRegistrationModal()" class="deep-orange-text">Регистрация</a></p>
+                  <p *ngIf="!isEnglish"><a href="#" class="deep-orange-text">Kalit so'zni unutdim</a></p>
+                  <p *ngIf="isEnglish"><a href="#" class="deep-orange-text">Забыл парол</a></p>
               </div>
-              <button type="submit" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form1.hide()" *ngIf="isRussian" mdbWavesEffect>Отмен</button>
-              <button type="submit" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form1.hide()" *ngIf="!isRussian" mdbWavesEffect>Bekor qilish</button>
+              <button type="submit" class="btn btn-outline-info btn-sm ml-auto btn-rounded" data-dismiss="modal"
+                      (click)="signInClickedWithGoogle()" *ngIf="isEnglish" mdbWavesEffect>
+                      <svg width="28" height="28"><g fill="none" fill-rule="evenodd"><path d="M20.66 12.7c0-.61-.05-1.19-.15-1.74H12.5v3.28h4.58a3.91 3.91 0 0 1-1.7 2.57v2.13h2.74a8.27 8.27 0 0 0 2.54-6.24z" fill="#4285F4"></path><path d="M12.5 21a8.1 8.1 0 0 0 5.63-2.06l-2.75-2.13a5.1 5.1 0 0 1-2.88.8 5.06 5.06 0 0 1-4.76-3.5H4.9v2.2A8.5 8.5 0 0 0 12.5 21z" fill="#34A853"></path><path d="M7.74 14.12a5.11 5.11 0 0 1 0-3.23v-2.2H4.9A8.49 8.49 0 0 0 4 12.5c0 1.37.33 2.67.9 3.82l2.84-2.2z" fill="#FBBC05"></path><path d="M12.5 7.38a4.6 4.6 0 0 1 3.25 1.27l2.44-2.44A8.17 8.17 0 0 0 12.5 4a8.5 8.5 0 0 0-7.6 4.68l2.84 2.2a5.06 5.06 0 0 1 4.76-3.5z" fill="#EA4335"></path></g></svg>
+                      Sign in with Google</button>
+              <button type="submit" class="btn btn-outline-info btn-sm ml-auto btn-rounded" data-dismiss="modal"
+                      (click)="signInClickedWithGoogle()" *ngIf="!isEnglish" mdbWavesEffect>
+                      <svg width="28" height="28"><g fill="none" fill-rule="evenodd"><path d="M20.66 12.7c0-.61-.05-1.19-.15-1.74H12.5v3.28h4.58a3.91 3.91 0 0 1-1.7 2.57v2.13h2.74a8.27 8.27 0 0 0 2.54-6.24z" fill="#4285F4"></path><path d="M12.5 21a8.1 8.1 0 0 0 5.63-2.06l-2.75-2.13a5.1 5.1 0 0 1-2.88.8 5.06 5.06 0 0 1-4.76-3.5H4.9v2.2A8.5 8.5 0 0 0 12.5 21z" fill="#34A853"></path><path d="M7.74 14.12a5.11 5.11 0 0 1 0-3.23v-2.2H4.9A8.49 8.49 0 0 0 4 12.5c0 1.37.33 2.67.9 3.82l2.84-2.2z" fill="#FBBC05"></path><path d="M12.5 7.38a4.6 4.6 0 0 1 3.25 1.27l2.44-2.44A8.17 8.17 0 0 0 12.5 4a8.5 8.5 0 0 0-7.6 4.68l2.84 2.2a5.06 5.06 0 0 1 4.76-3.5z" fill="#EA4335"></path></g></svg>
+                      Accedi con Google</button>
           </div>
       </div>
       <!--/.Content-->

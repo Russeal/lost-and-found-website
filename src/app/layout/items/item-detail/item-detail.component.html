@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 10rem; margin-bottom: 5rem">
 
   <!-- Grid row -->
-  <div class="row" *ngIf="item">
+  <div class="row" *ngIf="!isLoading">
 
     <!-- Grid column -->
     <div class="col-lg-5">
@@ -46,4 +46,7 @@
 
   </div>
   <!-- Grid row -->
+  <div class="row" *ngIf="isLoading">
+    <h2>Loading...</h2>
+  </div>
 </div>
