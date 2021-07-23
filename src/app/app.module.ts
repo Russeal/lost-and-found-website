@@ -23,6 +23,7 @@ import { ContactComponent } from './layout/contact/contact.component';
 import { ItemEditComponent } from './layout/items/item-edit/item-edit.component';
 import { NewItemComponent } from './layout/items/new-item/new-item.component';
 import { MyItemsComponent } from './layout/items/my-items/my-items.component';
+import { ItemByCatComponent } from './layout/items/item-by-cat/item-by-cat.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MyItemsComponent } from './layout/items/my-items/my-items.component';
     ContactComponent,
     ItemEditComponent,
     NewItemComponent,
-    MyItemsComponent
+    MyItemsComponent,
+    ItemByCatComponent
   ],
   imports: [
     BrowserModule,

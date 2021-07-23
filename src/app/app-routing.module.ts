@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './layout/contact/contact.component';
 import { FoundCreateComponent } from './layout/found-create/found-create.component';
+import { ItemByCatComponent } from './layout/items/item-by-cat/item-by-cat.component';
 import { ItemDetailComponent } from './layout/items/item-detail/item-detail.component';
 import { ItemEditComponent } from './layout/items/item-edit/item-edit.component';
 import { ItemsComponent } from './layout/items/items.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'my-items', component: MyItemsComponent },
     { path: 'new-item', component: NewItemComponent },
     { path: 'items/:id', component: ItemDetailComponent },
+    { path: ':category/items', component: ItemByCatComponent },
     { path: 'edit-item/:id', component: ItemEditComponent },
     { path: 'contact/:id', component: ContactComponent },
     { path: 'my-profile', component: MyProfileComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
         { path: 'my-items', component: MyItemsComponent },
         { path: 'new-item', component: NewItemComponent },
         { path: 'items/:id', component: ItemDetailComponent },
+        { path: ':category/items', component: ItemByCatComponent },
         { path: 'edit-item/:id', component: ItemEditComponent },
         { path: 'contact/:id', component: ContactComponent },
         { path: 'my-profile', component: MyProfileComponent },

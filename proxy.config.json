@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:8000",
+    "target": "https://lost-and-found-47118.oa.r.appspot.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

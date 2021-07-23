@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fakeItems } from 'src/app/dto/fake-data';
 import { Item } from 'src/app/dto/itemDto';
 import { ItemsService } from 'src/app/services/items.service';
 

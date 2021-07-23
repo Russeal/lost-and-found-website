@@ -6,16 +6,23 @@
   </div>
 
 
-  <div class="my-4 py-3" style="background-color: #fff;">
+  <div class="my-4 py-3 categoryPart">
     <div class="container">
         <div class="row">
 
           <div class="col-md-12">
 
-            <h3 class="my-4"><b>Search by category</b></h3>
+            <h3 class="mt-4" *ngIf="isEnglish"><b>Search by Category</b></h3>
+            <h3 class="mt-4" *ngIf="!isEnglish"><b>Cerca per Categoria</b></h3>
 
-            <p align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+            <div class="row mt-5 mb-4">
+              <div class="col-3" *ngFor="let cat of categories">
+                <a [routerLink]="[cat+'/items']" routerLinkActive="router-link-active">
+                  <img src="{{'../../../assets/' + cat + '.jpg'}}" class="mb-3">
+                  <p>{{ cat }}</p>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
     </div>
@@ -31,7 +38,7 @@
           <mdb-card>
             <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 192px">
               <!-- Card img -->
-              <mdb-card-img src="{{ '../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
+              <mdb-card-img src="{{'../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
               <a routerLink="items/{{ item.id }}">
                 <div class="mask"></div>
               </a>

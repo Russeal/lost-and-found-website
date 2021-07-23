@@ -1,34 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Item } from '../../dto/itemDto';
+import { Item } from 'src/app/dto/itemDto';
 import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss']
+  selector: 'app-item-by-cat',
+  templateUrl: './item-by-cat.component.html',
+  styleUrls: ['./item-by-cat.component.scss']
 })
-export class MainPageComponent implements OnInit {
+export class ItemByCatComponent implements OnInit {
 
   items: Item[];
-  categories = [
-    'Animals',
-    'Documents',
-    'Electronics',
-    'Personal Items'
-  ]
-
   public isEnglish: boolean = false;
+  public category;
 
   constructor(private router: Router, private route: ActivatedRoute, private itemsService: ItemsService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (location.pathname.split('/')[1] === 'en') {
       this.isEnglish = true;
     }
 
-    this.itemsService.getItems().subscribe(
+    this.category  = this.route.snapshot.paramMap.get('category') || ''
+
+    this.itemsService.getItemsByCategory(this.category).subscribe(
       data => {
         this.items = data
         console.log(data);

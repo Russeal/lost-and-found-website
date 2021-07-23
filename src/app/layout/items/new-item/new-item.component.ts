@@ -16,9 +16,10 @@ export class NewItemComponent implements OnInit {
   id: string = ''
   name: string = ''
   categories: string[] = [
-    'Personal Items',
+    'Animals',
+    'Documents',
     'Electronics',
-    'Animals'
+    'Personal Items'
   ]
   italy: Array<RegionDto> = italy;
   profile: string
