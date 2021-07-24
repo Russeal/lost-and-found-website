@@ -24,6 +24,7 @@ import { ItemEditComponent } from './layout/items/item-edit/item-edit.component'
 import { NewItemComponent } from './layout/items/new-item/new-item.component';
 import { MyItemsComponent } from './layout/items/my-items/my-items.component';
 import { ItemByCatComponent } from './layout/items/item-by-cat/item-by-cat.component';
+import { SearchItemsComponent } from './layout/items/search-items/search-items.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ItemByCatComponent } from './layout/items/item-by-cat/item-by-cat.compo
     ItemEditComponent,
     NewItemComponent,
     MyItemsComponent,
-    ItemByCatComponent
+    ItemByCatComponent,
+    SearchItemsComponent
   ],
   imports: [
     BrowserModule,

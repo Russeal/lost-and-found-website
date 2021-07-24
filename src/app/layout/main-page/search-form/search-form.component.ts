@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProvinceDto } from 'src/app/dto/provinceDto';
 import { RegionDto } from 'src/app/dto/regionDTO';
+import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
   selector: 'app-search-form',
@@ -580,7 +582,7 @@ export class SearchFormComponent implements OnInit {
     }
   }
 
-  constructor(private eRef: ElementRef) { }
+  constructor(private eRef: ElementRef, private itemsService: ItemsService, private router: Router) { }
 
   ngOnInit(): void {
     if (location.pathname.split('/')[1] === 'en') {
@@ -591,7 +593,13 @@ export class SearchFormComponent implements OnInit {
 
 
   public goSearch() {
-    var item = (<HTMLInputElement>document.getElementById('mainSearch')).value
+    let item = (<HTMLInputElement>document.getElementById('mainSearch')).value
+    let loc
+
+    if (this.selectedRegion.label == undefined) loc = 'Italia'
+    else loc = this.value
+
+    this.router.navigate(['/search'], {queryParams: {str: item, location: loc}});
 
     // GO SEARCH in HERE
   }

@@ -1,0 +1,43 @@
+<div class="container" style="margin-top: 10rem; margin-bottom: 5rem">
+  <div *ngIf="items">
+    <h2 class="my-5" style="text-align: center;"><b>Search Announcements</b></h2>
+    <div class="row">
+      <div class="col-3 mb-4" *ngFor="let item of items">
+        <!-- Card -->
+        <mdb-card>
+          <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 192px">
+            <!-- Card img -->
+            <mdb-card-img src="{{'../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
+            <a routerLink="items/{{ item.id }}">
+              <div class="mask"></div>
+            </a>
+          </div>
+          <!--Card content-->
+          <mdb-card-body style="text-align: left;">
+            <!--Title-->
+            <mdb-card-title>
+              <h4 style="
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;">{{ item.name }}</h4>
+            </mdb-card-title>
+
+            <!--Text-->
+            <mdb-card-text class="itemDet">{{ item.details }}</mdb-card-text>
+
+            <!-- time -->
+            <p style="font-size: 0.7rem;"><mdb-icon far icon="clock"></mdb-icon> {{ item.time }}, {{item.date}} </p>
+            <!-- Location -->
+            <p><mdb-icon fas icon="map-marker-alt"></mdb-icon><strong> {{ item.location }}</strong></p>
+
+          </mdb-card-body>
+        </mdb-card>
+        <!-- Card -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!items">
+    <h2>Loading...</h2>
+  </div>
+</div>

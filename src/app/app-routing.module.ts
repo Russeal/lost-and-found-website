@@ -8,6 +8,7 @@ import { ItemEditComponent } from './layout/items/item-edit/item-edit.component'
 import { ItemsComponent } from './layout/items/items.component';
 import { MyItemsComponent } from './layout/items/my-items/my-items.component';
 import { NewItemComponent } from './layout/items/new-item/new-item.component';
+import { SearchItemsComponent } from './layout/items/search-items/search-items.component';
 
 import { LayoutComponent } from './layout/layout.component';
 import { LostCreateComponent } from './layout/lost-create/lost-create.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'my-items', component: MyItemsComponent },
     { path: 'new-item', component: NewItemComponent },
     { path: 'items/:id', component: ItemDetailComponent },
+    { path: 'search', component: SearchItemsComponent },
     { path: ':category/items', component: ItemByCatComponent },
     { path: 'edit-item/:id', component: ItemEditComponent },
     { path: 'contact/:id', component: ContactComponent },
@@ -35,6 +37,7 @@ const routes: Routes = [
         { path: 'my-items', component: MyItemsComponent },
         { path: 'new-item', component: NewItemComponent },
         { path: 'items/:id', component: ItemDetailComponent },
+        { path: 'search', component: SearchItemsComponent },
         { path: ':category/items', component: ItemByCatComponent },
         { path: 'edit-item/:id', component: ItemEditComponent },
         { path: 'contact/:id', component: ContactComponent },

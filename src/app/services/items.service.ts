@@ -25,6 +25,10 @@ export class ItemsService {
     return this.http.get<Array<Item>>(`/api/${ category }/items`);
   }
 
+  searchItems(str: string, location: string): Observable<Array<Item>> {
+    return this.http.post<Array<Item>>(`api/search`, { str, location });
+  }
+
   getItemByID(id: string): Observable<Item> {
     return this.http.get<Item>(`/api/items/${ id }`);
   }

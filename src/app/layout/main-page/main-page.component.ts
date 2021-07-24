@@ -29,10 +29,7 @@ export class MainPageComponent implements OnInit {
     }
 
     this.itemsService.getItems().subscribe(
-      data => {
-        this.items = data
-        console.log(data);
-      }
+      data => this.items = data
     );
   }
 
