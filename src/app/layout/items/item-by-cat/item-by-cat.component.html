@@ -7,7 +7,7 @@
         <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 192px">
           <!-- Card img -->
           <mdb-card-img src="{{'../../../assets/images/' + item.id + '.jpg'}}" alt="Card image cap"></mdb-card-img>
-          <a routerLink="items/{{ item.id }}">
+          <a [routerLink]="isEnglish ? '/en/items/' + item.id : '/items/' + item.id">
             <div class="mask"></div>
           </a>
         </div>

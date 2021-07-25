@@ -599,7 +599,9 @@ export class SearchFormComponent implements OnInit {
     if (this.selectedRegion.label == undefined) loc = 'Italia'
     else loc = this.value
 
-    this.router.navigate(['/search'], {queryParams: {str: item, location: loc}});
+    if (this.isEnglish) this.router.navigate(['/en/search'], {queryParams: {str: item, location: loc}});
+    else this.router.navigate(['/search'], {queryParams: {str: item, location: loc}});
+
 
     // GO SEARCH in HERE
   }

@@ -17,6 +17,9 @@ export class SearchItemsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private itemsService: ItemsService) { }
 
   ngOnInit(): void {
+    if (location.pathname.split('/')[1] === 'en') {
+      this.isEnglish = true;
+    }
 
     this.route.queryParamMap.subscribe((params) => {
         const item = params.get('str')
