@@ -31,7 +31,8 @@
 
 
   <div class="container" *ngIf="items">
-    <h2 class="my-5"><b>Last Announcements</b></h2>
+    <h2 class="my-5" *ngIf="isEnglish"><b>Last Announcements</b></h2>
+    <h2 class="my-5" *ngIf="!isEnglish"><b>Ultimi Annunci</b></h2>
       <div class="row">
         <div class="col-3 mb-4" *ngFor="let item of items">
           <!-- Card -->
@@ -59,7 +60,7 @@
               <!-- time -->
               <p style="font-size: 0.7rem;"><mdb-icon far icon="clock"></mdb-icon> {{ item.time }}, {{item.date}} </p>
               <!-- Location -->
-              <p><mdb-icon fas icon="map-marker-alt"></mdb-icon><strong> {{ item.location }}</strong></p>
+              <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><mdb-icon fas icon="map-marker-alt"></mdb-icon><strong> {{ item.location }}</strong></p>
 
             </mdb-card-body>
           </mdb-card>

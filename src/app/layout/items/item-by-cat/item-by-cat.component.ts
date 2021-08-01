@@ -25,8 +25,7 @@ export class ItemByCatComponent implements OnInit {
 
     this.itemsService.getItemsByCategory(this.category).subscribe(
       data => {
-        this.items = data
-        console.log(data);
+        this.items = data.reverse()
       }
     );
   }

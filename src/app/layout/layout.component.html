@@ -15,9 +15,18 @@
                   <a class="nav-link" (click)="form1.show()">
                     <mdb-icon fas icon="sign-in-alt"></mdb-icon>{{ isEnglish ? 'Sign in' : 'Accedi' }}</a>
               </li>
-              <li class="nav-item waves-light mr-2" mdbWavesEffect *ngIf="auth.user | async">
-                  <a class="nav-link" (click)="signOutClicked()">
-                    {{ isEnglish ? 'Sign out' : 'Disconnessione' }}<mdb-icon fas icon="sign-out-alt"></mdb-icon></a>
+              <li class="nav-item waves-light mr-2" mdbWavesEffect *ngIf="auth.user | async" style="overflow: unset;">
+                <div class="btn-group" mdbDropdown style="padding-top: 5px">
+                  <button mdbDropdownToggle mdbBtn size="md" class="dropdown-toggle waves-light" type="button"
+                    mdbWavesEffect style="background-color: #024d53 !important; color: #fff; padding: 0.7rem;">
+                    {{ name }}
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right" style="font-size: 0.8rem">
+                    <a class="dropdown-item" routerLink="my-items" style="padding: 5px 15px; font-size: 1rem">{{ isEnglish ? 'My Announcements' : 'I Miei Annunci' }}</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="signOutClicked()" style="padding: 5px 15px; font-size: 1rem">{{ isEnglish ? 'Sign out' : 'Disconnessione' }} &nbsp; <mdb-icon fas icon="sign-out-alt"></mdb-icon></a>
+                  </div>
+                </div>
               </li>
           </ul>
       </links>
@@ -156,9 +165,9 @@
 
           <!--First column-->
           <div class="col-md-4">
-              <h5 class="title">Topaloq</h5>
+              <h5 class="title">Lost and Found</h5>
               <hr>
-              <p class="underTitle">Topaloq.uz bu yo'qolgan buyumlar o'z egasini topishi uchun yaratilgan sayt. Nimadir topib oldingizmi? Egasiga qaytarmoqchimiz? Biz yordam beramiz.</p>
+              <p class="underTitle">Lost and Found website - bu yo'qolgan buyumlar o'z egasini topishi uchun yaratilgan sayt. Nimadir topib oldingizmi? Egasiga qaytarmoqchimiz? Biz yordam beramiz.</p>
 
               <!--Call to action-->
               <ul class="list-unstyled list-inline" *ngIf="!isLoggedIn">
@@ -255,7 +264,7 @@
   <div class="footer-copyright text-center py-3">
       <div class="container-fluid white-text">
           Lost & Found © 2021 | Abdurasul Bobonazarov |
-          <a href="https://www.Topaloq.uz"> www.lost-found.it </a>
+          <a href="https://lost-and-found-47118.oa.r.appspot.com/"> www.lost-found.it</a>
 
       </div>
   </div>

@@ -24,7 +24,10 @@ export class LayoutComponent implements OnInit {
 
   constructor(private router: Router, public auth: AngularFireAuth) {
     this.auth.authState.subscribe(user => {
-      if (user) this.isLoggedIn = true
+      if (user) {
+        this.isLoggedIn = true;
+        this.name = user.displayName || '';
+      }
     })
   }
 
@@ -38,14 +41,17 @@ export class LayoutComponent implements OnInit {
   public signInClickedWithGoogle(): void {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(() => {
+
         this.isLoggedIn = true
         document.getElementById('form1Hider')?.click();
       });
   }
 
   public signOutClicked(): void {
-    this.auth.signOut()
     this.isLoggedIn = false
+    this.auth.signOut().then(() => {
+      this.router.navigateByUrl( this.isEnglish ? '/en' : '/');
+    })
   }
 
 

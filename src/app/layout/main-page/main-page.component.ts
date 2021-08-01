@@ -29,7 +29,7 @@ export class MainPageComponent implements OnInit {
     }
 
     this.itemsService.getItems().subscribe(
-      data => this.items = data
+      data => this.items = data.reverse()
     );
   }
 
